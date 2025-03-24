@@ -11,6 +11,15 @@ const contactForm = document.getElementById('contactForm');
 const themeToggle = document.querySelector('.theme-toggle');
 const mouseBlob = document.querySelector('.mouse-blob');
 const toastContainer = document.querySelector('.toast-container');
+const body = document.body;
+const menuOverlay = document.querySelector('.menu-overlay');
+const menuClose = document.querySelector('.menu-close');
+const scrollProgress = document.querySelector('.scroll-progress');
+const cursorFollower = document.querySelector('.cursor-follower');
+const pixelCursors = document.querySelectorAll('.pixel-cursor');
+const loader = document.querySelector('.page-loader');
+const loaderProgress = document.querySelector('.loader-progress');
+const loaderText = document.querySelector('.loader-subtitle');
 
 // Make sure the about content is visible when the page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -80,27 +89,32 @@ document.addEventListener('DOMContentLoaded', () => {
 // Page Loader
 window.addEventListener('load', () => {
     // Simulate loading progress
-    const loaderProgress = document.querySelector('.loader-progress');
-    if (!loaderProgress) return;
-    
-    let width = 0;
-    const interval = setInterval(() => {
-        width += Math.random() * 10;
-        if (width > 100) {
-            width = 100;
-            clearInterval(interval);
+    let loadProgress = 0;
+    const loadInterval = setInterval(() => {
+        loadProgress += Math.floor(Math.random() * 10) + 5;
+        if (loadProgress >= 100) {
+            loadProgress = 100;
+            clearInterval(loadInterval);
             
-            // After progress reaches 100%, hide the loader
+            // Update progress bar
+            loaderProgress.style.width = `${loadProgress}%`;
+            loaderText.textContent = "Ready!";
+            
+            // Hide loader after a small delay
             setTimeout(() => {
-                pageLoader.classList.add('loaded');
-                document.body.classList.add('loaded');
+                loader.classList.add('loaded');
                 
-                // Initialize animations after loader is hidden
-                initAnimations();
-            }, 500);
+                // After loader is hidden, initialize animations
+                setTimeout(() => {
+                    initAnimations();
+                }, 500);
+            }, 400);
+        } else {
+            // Update progress bar
+            loaderProgress.style.width = `${loadProgress}%`;
+            loaderText.textContent = `Loading resources... ${loadProgress}%`;
         }
-        loaderProgress.style.width = width + '%';
-    }, 150);
+    }, 200);
 });
 
 // Theme Toggle
@@ -154,12 +168,15 @@ window.addEventListener('scroll', () => {
 // Mobile menu toggle
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-        const icon = menuToggle.querySelector('i');
-        if (icon) {
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        }
+        menuOverlay.classList.add('active');
+        body.style.overflow = 'hidden';
+    });
+}
+
+if (menuClose) {
+    menuClose.addEventListener('click', () => {
+        menuOverlay.classList.remove('active');
+        body.style.overflow = 'auto';
     });
 }
 
@@ -475,4 +492,112 @@ function initAnimations() {
             });
         });
     }
-} 
+}
+
+// Scroll Progress Bar
+window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / scrollHeight) * 100;
+    
+    if (scrollProgress) {
+        scrollProgress.style.width = `${scrollPercentage}%`;
+    }
+});
+
+// Custom Cursor
+if (cursorFollower) {
+    document.addEventListener('mousemove', (e) => {
+        cursorFollower.style.left = `${e.clientX}px`;
+        cursorFollower.style.top = `${e.clientY}px`;
+    });
+    
+    // Change cursor size on hover of links and buttons
+    const interactiveElements = document.querySelectorAll('a, button, .project-item, .hero-card');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursorFollower.style.width = '50px';
+            cursorFollower.style.height = '50px';
+            cursorFollower.style.background = 'rgba(123, 121, 255, 0.1)';
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursorFollower.style.width = '30px';
+            cursorFollower.style.height = '30px';
+            cursorFollower.style.background = 'transparent';
+        });
+    });
+}
+
+// Pixel Cursors
+if (pixelCursors.length) {
+    // Position pixel cursors at random places on the screen initially
+    pixelCursors.forEach(cursor => {
+        positionPixelCursor(cursor);
+    });
+    
+    // Reposition cursors every few seconds
+    setInterval(() => {
+        pixelCursors.forEach(cursor => {
+            positionPixelCursor(cursor);
+        });
+    }, 10000);
+}
+
+function positionPixelCursor(cursorElement) {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    
+    // Calculate random position, but keep away from edges
+    const offsetX = Math.floor(Math.random() * (windowWidth - 200)) + 100;
+    const offsetY = Math.floor(Math.random() * (windowHeight - 200)) + 100;
+    
+    // Smooth transition to new position
+    cursorElement.style.transition = 'left 3s ease, top 3s ease';
+    cursorElement.style.left = `${offsetX}px`;
+    cursorElement.style.top = `${offsetY}px`;
+}
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close menu overlay if open
+        if (menuOverlay && menuOverlay.classList.contains('active')) {
+            menuOverlay.classList.remove('active');
+            body.style.overflow = 'auto';
+        }
+        
+        const targetId = this.getAttribute('href');
+        
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Project Images Hover Effect
+const projectItems = document.querySelectorAll('.project-item');
+
+projectItems.forEach(item => {
+    const projectImage = item.querySelector('img');
+    
+    if (projectImage) {
+        item.addEventListener('mouseenter', () => {
+            projectImage.style.transform = 'scale(1.05)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            projectImage.style.transform = 'scale(1)';
+        });
+    }
+}); 
