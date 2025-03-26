@@ -877,38 +877,40 @@
 }
 
 .logo {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.3rem 0.8rem;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    position: relative;
-}
-
-.logo::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-1);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 100px;
-    opacity: 0.1;
     transition: all 0.3s ease;
 }
 
-.logo:hover::before {
-    opacity: 0.15;
-    transform: scale(1.05);
+.logo:hover {
+    transform: translateY(-2px);
+    background: var(--gradient-1);
+    border-color: transparent;
+}
+
+.logo:hover .logo-text,
+.logo:hover i {
+    color: white;
+}
+
+.logo i {
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
 }
 
 .logo-text {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
 }
 
 .nav-links {
