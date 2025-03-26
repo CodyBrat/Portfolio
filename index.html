@@ -1,237 +1,584 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Creative Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Page Loader -->
-    <div class="page-loader">
-        <div class="loader-content">
-            <div class="loader-text">PORTFOLIO</div>
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <div class="grid-background"></div>
+    <div class="interactive-background">
+        <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
             </div>
-            <div class="loader-subtitle">Loading resources...</div>
-        </div>
+    <div class="floating-element float-1"></div>
+    <div class="floating-element float-2"></div>
+    <div class="glow-effect"></div>
+
+    <div class="loading">
+        <div class="loading-pixel"></div>
+        <div class="loading-pixel"></div>
+        <div class="loading-pixel"></div>
     </div>
 
-    <!-- Cursor Elements -->
     <div class="cursor-follower"></div>
-    <div class="pixel-cursor cursor-hand"></div>
-    <div class="pixel-cursor cursor-lightbulb"></div>
-    <div class="pixel-cursor cursor-trophy"></div>
-    <div class="pixel-cursor cursor-pointer"></div>
-
-    <!-- Scroll Progress -->
-    <div class="scroll-progress"></div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            <a href="#home">Portfolio</a>
+    <nav class="pixel-nav">
+        <a href="/" class="logo">
+            <span class="logo-text">PPP</span>
+        </a>
+        <div class="nav-links">
+            <a href="#about" class="active">ABOUT</a>
+            <a href="#work">WORK</a>
+            <a href="#blog">BLOG</a>
+            <a href="#contact">CONTACT</a>
         </div>
-        <div class="header-center">
-            <a href="mailto:hello@example.com" class="email-link">hello@example.com</a>
-            <div class="availability">Available for work</div>
-        </div>
-        <nav class="navigation">
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="menu-toggle">Menu</div>
-    </header>
+    </nav>
 
-    <!-- Menu Overlay -->
-    <div class="menu-overlay">
-        <div class="menu-close">Close</div>
-        <nav class="menu-nav">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-divider"></div>
-            <div class="menu-socials">
-                <h3>Find me on</h3>
-                <ul>
-                    <li><a href="https://github.com" target="_blank">Github</a></li>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://dribbble.com" target="_blank">Dribbble</a></li>
-                </ul>
+    <main class="hero">
+        <div class="game-overlay"></div>
+        <div class="pixel-container">
+            <div class="surrounding-elements">
+                <div class="tech-circle" data-text="HTML5"></div>
+                <div class="tech-circle" data-text="CSS3"></div>
+                <div class="tech-circle" data-text="JS"></div>
+                <div class="tech-circle" data-text="REACT"></div>
+                <div class="tech-circle" data-text="NODE"></div>
+                <div class="tech-circle" data-text="GIT"></div>
             </div>
-            <div class="menu-footer">
-                <div class="availability">Available for work</div>
-                <div class="email">hello@example.com</div>
+            <div class="title-container">
+                <p class="intro-text">Hi, I'm Priyabrata</p>
+                <h1 class="name-text" data-text="Creative">Creative</h1>
+                <h1 class="name-text" data-text="Developer">Developer</h1>
+                <div class="tech-stack">
+                    <span class="tech-item">HTML</span>
+                    <span class="tech-item">CSS</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">React</span>
+                    <span class="tech-item">Node.js</span>
+                </div>
+                <p class="availability">AVAILABLE FOR FREELANCE WORK</p>
+                <a href="mailto:your.email@example.com" class="email-button">
+                    <i class="fas fa-envelope"></i>
+                    Get in touch
+                </a>
+                <div class="title-decorations">
+                    <div class="pixel-line left"></div>
+                    <div class="pixel-line right"></div>
+                </div>
             </div>
-        </nav>
+            <div class="game-elements">
+                <div class="floating-platform platform-1"></div>
+                <div class="floating-platform platform-2"></div>
+                <div class="floating-platform platform-3"></div>
+                <div class="collectible coin coin-1"></div>
+                <div class="collectible coin coin-2"></div>
+                <div class="collectible coin coin-3"></div>
+            </div>
+            <div class="game-stats">
+                <div class="score">SCORE: <span id="score">0</span></div>
+                <div class="level">LEVEL: <span id="level">1</span></div>
+            </div>
+            <div class="pixel-decorations">
+                <div class="pixel pixel-1"></div>
+                <div class="pixel pixel-2"></div>
+                <div class="pixel pixel-3"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrows">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
     </div>
+    </main>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-pre">Hello, I'm</div>
-            <h1 class="hero-title">Creative Developer</h1>
-            <div class="hero-cards">
-                <div class="hero-card">
-                    <p>Building digital products, brands, and experiences</p>
+    <section id="about" class="about-section">
+        <div class="about-background-shapes">
+            <div class="about-shape about-shape-1"></div>
+            <div class="about-shape about-shape-2"></div>
+        </div>
+        <div class="about-container">
+            <div class="about-header">
+                <h2 class="about-title">About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-frame">
+                        <img src="assets/profile.jpg" alt="Profile" class="profile-image">
+                    </div>
                 </div>
-                <div class="hero-card">
-                    <p>Based in New York, working worldwide</p>
+                <div class="about-text">
+                    <p>
+                        I am a web developer, frontend developer, and designer passionate about creating modern, interactive, and user-friendly applications. Currently pursuing my undergraduate studies at 
+                        <span class="highlight">Newton School of Technology, Pune</span>, I am constantly enhancing my skills in 
+                        <span class="highlight">React</span>, 
+                        <span class="highlight">TypeScript</span>, 
+                        <span class="highlight">Node.js</span> frameworks, and 
+                        <span class="highlight">Tailwind CSS</span>.
+                    </p>
+                    <p>
+                        As a core member of the E-Cell (SharkSphere) and Robotics Club (IRIS), I actively contribute to web development, UI/UX design, and tech innovation. I also work as a freelancer on Fiverr, helping businesses build digital solutions.
+                    </p>
+                    <p>
+                        Beyond development, I have a strong interest in game development (Unreal Engine), competitive programming, and robotics. My goal is to keep exploring new technologies and create impactful projects that push the boundaries of innovation.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">UI/UX Design</span>
+                        <span class="tech-tag">Unreal Engine</span>
+                        <span class="tech-tag">Competitive Programming</span>
+                        <span class="tech-tag">Robotics</span>
                 </div>
-                <div class="hero-card">
-                    <p>Focused on creating meaningful and delightful experiences</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2 class="section-title">Selected Work</h2>
-        <div class="projects-grid">
-            <a href="#" class="project-item">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>E-commerce Website</h3>
-                    <div class="project-tags">
-                        <span>Web Design</span>
-                        <span>UX/UI</span>
-                        <span>ReactJS</span>
+    <section id="features" class="section">
+        <div class="pixel-container">
+            <h2>FEATURES</h2>
+            <div class="saas-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
                     </div>
+                    <h3 class="feature-title">Clean Code</h3>
+                    <p class="feature-description">Writing maintainable, efficient, and scalable code that follows best practices.</p>
                 </div>
-            </a>
-            <a href="#" class="project-item">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 2">
-                </div>
-                <div class="project-info">
-                    <h3>Mobile Application</h3>
-                    <div class="project-tags">
-                        <span>App Design</span>
-                        <span>Prototyping</span>
-                        <span>Flutter</span>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
+                    <h3 class="feature-title">Creative Design</h3>
+                    <p class="feature-description">Creating unique and engaging user interfaces that stand out.</p>
                 </div>
-            </a>
-            <a href="#" class="project-item">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1152&q=80" alt="Project 3">
-                </div>
-                <div class="project-info">
-                    <h3>Brand Identity</h3>
-                    <div class="project-tags">
-                        <span>Branding</span>
-                        <span>Logo Design</span>
-                        <span>Strategy</span>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
+                    <h3 class="feature-title">Responsive</h3>
+                    <p class="feature-description">Building websites that work perfectly on all devices and screen sizes.</p>
                 </div>
-            </a>
-            <a href="#" class="project-item">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 4">
-                </div>
-                <div class="project-info">
-                    <h3>Portfolio Website</h3>
-                    <div class="project-tags">
-                        <span>Web Design</span>
-                        <span>Development</span>
-                        <span>Animation</span>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
                     </div>
+                    <h3 class="feature-title">Performance</h3>
+                    <p class="feature-description">Optimizing for speed and ensuring smooth user experiences.</p>
                 </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a creative developer who specializes in building beautiful digital experiences. With over 5 years of experience in the field, I've worked with various clients from startups to established companies.</p>
-                <p>My approach to design is to create user-centered, accessible, and visually appealing products that tell a compelling story and provide meaningful interactions.</p>
             </div>
-            <div class="about-services">
-                <h3>Services</h3>
-                <ul>
-                    <li>Web Development</li>
-                    <li>UI/UX Design</li>
-                    <li>Brand Identity</li>
-                    <li>Mobile App Design</li>
-                    <li>Interactive Design</li>
-                    <li>Front-end Development</li>
-                </ul>
-            </div>
-            <div class="about-awards">
-                <h3>Awards & Recognition</h3>
-                <ul class="awards-list">
-                    <li>
-                        <div class="award-type">Design Award</div>
-                        <div class="award-title">Awwwards Site of the Day</div>
-                        <div class="award-date">2023</div>
-                        <div class="award-description">For E-commerce Website Project</div>
-                    </li>
-                    <li>
-                        <div class="award-type">Recognition</div>
-                        <div class="award-title">CSS Design Awards</div>
-                        <div class="award-date">2022</div>
-                        <div class="award-description">For Portfolio Website Project</div>
-                    </li>
-                    <li>
-                        <div class="award-type">Competition</div>
-                        <div class="award-title">App Design of the Year</div>
-                        <div class="award-date">2021</div>
-                        <div class="award-description">For Mobile Application Project</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-content">
-            <h2>Let's work together. <a href="mailto:hello@example.com">Get in touch</a></h2>
-            <div class="contact-details">
-                <div class="contact-info">
-                    <h3>Location</h3>
-                    <p>New York, NY</p>
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Completed</div>
                 </div>
-                <div class="contact-socials">
-                    <h3>Social</h3>
-                    <ul>
-                        <li><a href="https://github.com" target="_blank">Github</a></li>
-                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://dribbble.com" target="_blank">Dribbble</a></li>
-                    </ul>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2023 Portfolio. All rights reserved.</p>
+    <section id="projects" class="section">
+        <div class="pixel-container">
+            <h2>PROJECTS</h2>
+            <div class="projects-grid">
+                <!-- Project items will be added dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <div class="skills-meters">
+                <h2 class="about-title">Skills</h2>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Frontend Development</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">React & TypeScript</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">UI/UX Design</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Node.js & Backend</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Game Development</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-timeline">
+                <h2 class="about-title">Experience</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3 class="timeline-title">Core Member</h3>
+                    <div class="timeline-company">E-Cell (SharkSphere)</div>
+                    <p class="timeline-description">
+                        Leading web development initiatives and contributing to club website development. 
+                        Implementing modern design patterns and ensuring responsive layouts.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="timeline-tech-item">React</span>
+                        <span class="timeline-tech-item">TypeScript</span>
+                        <span class="timeline-tech-item">Tailwind</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3 class="timeline-title">Core Member</h3>
+                    <div class="timeline-company">Robotics Club (IRIS)</div>
+                    <p class="timeline-description">
+                        Developing interactive web applications for robotics projects. 
+                        Creating user interfaces for robot control systems.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="timeline-tech-item">Node.js</span>
+                        <span class="timeline-tech-item">WebSocket</span>
+                        <span class="timeline-tech-item">Three.js</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Present</div>
+                    <h3 class="timeline-title">Freelance Developer</h3>
+                    <div class="timeline-company">Fiverr</div>
+                    <p class="timeline-description">
+                        Building custom websites and applications for clients worldwide.
+                        Specializing in modern web technologies and creative solutions.
+                    </p>
+                    <div class="timeline-tech">
+                        <span class="timeline-tech-item">Full Stack</span>
+                        <span class="timeline-tech-item">UI/UX</span>
+                        <span class="timeline-tech-item">API Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="pixel-container">
+            <h2>CONTACT</h2>
+            <div class="contact-form">
+                <form id="contact-form">
+                    <input type="text" placeholder="NAME" required>
+                    <input type="email" placeholder="EMAIL" required>
+                    <textarea placeholder="MESSAGE" required></textarea>
+                    <button type="submit" class="saas-button">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pixel-footer">
+        <div class="pixel-container">
+            <p>© 2024 Creative Developer</p>
+            <div class="social-links">
+                <a href="#" class="pixel-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="pixel-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="pixel-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            document.querySelector('.loading').style.display = 'none';
+        });
+
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Add transition class
+            document.body.classList.add('theme-transition');
+            setTimeout(() => {
+                document.body.classList.remove('theme-transition');
+            }, 500);
+            
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        // Cursor follower
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.createElement('div');
+            cursor.className = 'pixel';
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+            cursor.style.animation = 'none';
+            document.body.appendChild(cursor);
+            
+            setTimeout(() => {
+                cursor.remove();
+            }, 500);
+        });
+
+        // Parallax effect for title container
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.title-container');
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            container.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Reset transform on mouse leave
+        document.addEventListener('mouseleave', () => {
+            const container = document.querySelector('.title-container');
+            container.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
+        });
+
+        // Parallax effect for floating elements
+        document.addEventListener('mousemove', (e) => {
+            const float1 = document.querySelector('.float-1');
+            const float2 = document.querySelector('.float-2');
+            
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            float1.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            float2.style.transform = `translate(${-x * 50}px, ${-y * 50}px)`;
+        });
+
+        // Navigation active state
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Interactive background particles
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            document.body.appendChild(particle);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 2 + 1;
+            const dx = Math.cos(angle) * velocity;
+            const dy = Math.sin(angle) * velocity;
+
+            let opacity = 0.5;
+            let scale = 1;
+
+            function animate() {
+                if (opacity <= 0) {
+                    particle.remove();
+                    return;
+                }
+
+                const currentX = parseFloat(particle.style.left);
+                const currentY = parseFloat(particle.style.top);
+                particle.style.left = (currentX + dx) + 'px';
+                particle.style.top = (currentY + dy) + 'px';
+                
+                opacity -= 0.01;
+                scale += 0.02;
+                particle.style.opacity = opacity;
+                particle.style.transform = `scale(${scale})`;
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Create particles on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.1) { // Limit particle creation
+                createParticle(e.clientX, e.clientY);
+            }
+
+            // Update glow effect position
+            const glowEffect = document.querySelector('.glow-effect');
+            glowEffect.style.left = (e.clientX - 100) + 'px';
+            glowEffect.style.top = (e.clientY - 100) + 'px';
+
+            // Update interactive hover effect
+            const titleContainer = document.querySelector('.title-container');
+            if (titleContainer) {
+                const rect = titleContainer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                titleContainer.style.setProperty('--mouse-x', `${x}%`);
+                titleContainer.style.setProperty('--mouse-y', `${y}%`);
+            }
+        });
+
+        // Parallax effect for geometric shapes
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.geometric-shape');
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.05;
+                const x = (centerX - e.clientX) * speed;
+                const y = (centerY - e.clientY) * speed;
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Enhanced scroll animation
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.geometric-shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.2;
+                const yPos = scrolled * speed;
+                shape.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Animate skill bars on scroll
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 100);
+            });
+        }
+
+        // Animate timeline items on scroll
+        function animateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSkills();
+            animateTimeline();
+        });
+
+        // Reinitialize skill animations when section comes into view
+        const skillsSection = document.querySelector('.skills-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkills();
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(skillsSection);
+    </script>
+    <script src="js/main.js"></script>
 </body>
 </html> 
