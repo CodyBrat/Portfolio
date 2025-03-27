@@ -1,7 +1,41 @@
-// Cursor follower
+// Cursor follower with device detection
 const cursor = document.querySelector('.cursor-follower');
-document.addEventListener('mousemove', (e) => {
-    cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+let isMobile = false;
+
+// Detect mobile devices
+function detectMobile() {
+    isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
+    // Hide cursor follower on mobile
+    if (isMobile && cursor) {
+        cursor.style.display = 'none';
+    } else if (cursor) {
+        cursor.style.display = 'block';
+    }
+}
+
+// Run detection on load and resize
+window.addEventListener('load', detectMobile);
+window.addEventListener('resize', detectMobile);
+
+// Only track mouse on desktop
+if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+        if (!isMobile) {
+            cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+        }
+    });
+}
+
+// Touch events for mobile navigation
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('touchstart', function() {
+        this.classList.add('touch-active');
+    });
+    
+    link.addEventListener('touchend', function() {
+        this.classList.remove('touch-active');
+    });
 });
 
 // Project data
@@ -28,42 +62,153 @@ const projects = [
 
 // Populate projects grid
 const projectsGrid = document.querySelector('.projects-grid');
-projects.forEach(project => {
-    const projectElement = document.createElement('div');
-    projectElement.classList.add('project-card');
-    projectElement.innerHTML = `
-        <div class="project-image" style="background-color: var(--primary-color); height: 200px;"></div>
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        <div class="project-tags">
-            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-        </div>
-    `;
-    projectsGrid.appendChild(projectElement);
-});
+if (projectsGrid) {
+    projects.forEach(project => {
+        const projectElement = document.createElement('div');
+        projectElement.classList.add('project-card');
+        projectElement.innerHTML = `
+            <div class="project-image" style="background-color: var(--primary-color); height: 200px;"></div>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-tags">
+                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+        `;
+        projectsGrid.appendChild(projectElement);
+    });
+}
+
+// Mobile menu toggle
+const createMobileMenu = () => {
+    const nav = document.querySelector('.pixel-nav');
+    
+    if (!nav) return;
+    
+    // Create mobile menu button if it doesn't exist
+    if (!document.querySelector('.mobile-menu-toggle')) {
+        const menuToggle = document.createElement('button');
+        menuToggle.classList.add('mobile-menu-toggle');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+        
+        // Add to navigation
+        nav.appendChild(menuToggle);
+        
+        // Add event listener
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('mobile-menu-open');
+            
+            // Change icon based on state
+            if (nav.classList.contains('mobile-menu-open')) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    nav.classList.remove('mobile-menu-open');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    }
+};
+
+// Initialize mobile menu on load and resize
+window.addEventListener('load', createMobileMenu);
+window.addEventListener('resize', createMobileMenu);
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
-// Contact form handling
+// Contact form handling with touch support
 const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Message sent successfully!');
-    contactForm.reset();
-});
+if (contactForm) {
+    // Add active class to form elements on focus
+    const formInputs = contactForm.querySelectorAll('input, textarea');
+    formInputs.forEach(input => {
+        // Focus events
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('input-focused');
+        });
+        
+        input.addEventListener('blur', () => {
+            if (!input.value) {
+                input.parentElement.classList.remove('input-focused');
+            }
+        });
+        
+        // For touch devices
+        input.addEventListener('touchstart', () => {
+            input.parentElement.classList.add('touch-active');
+        });
+        
+        input.addEventListener('touchend', () => {
+            input.parentElement.classList.remove('touch-active');
+        });
+    });
+    
+    // Form submission
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('Message sent successfully!');
+        contactForm.reset();
+        
+        // Reset active states
+        formInputs.forEach(input => {
+            input.parentElement.classList.remove('input-focused');
+        });
+    });
+}
+
+// Lazy loading for images
+const lazyLoadImages = () => {
+    if ('IntersectionObserver' in window) {
+        const imgObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    imgObserver.unobserve(img);
+                }
+            });
+        });
+        
+        // Observe all images with data-src attribute
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imgObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+        });
+    }
+};
+
+// Run lazy loading on page load
+window.addEventListener('load', lazyLoadImages);
 
 // Intersection Observer for fade-in animations
 const observerOptions = {
-    threshold: 0.1
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -90,11 +235,66 @@ style.textContent = `
         opacity: 1 !important;
         transform: translateY(0) !important;
     }
+    
+    /* Touch active states */
+    .touch-active {
+        opacity: 0.7;
+    }
+    
+    /* Mobile menu styles */
+    @media (max-width: 768px) {
+        .pixel-nav {
+            padding: 0.5rem;
+        }
+        
+        .pixel-nav .nav-links {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            flex-direction: column;
+            background: rgba(30, 30, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 0 0 20px 20px;
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .pixel-nav.mobile-menu-open .nav-links {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .mobile-menu-toggle {
+            display: block;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .mobile-menu-toggle {
+            display: none;
+        }
+    }
 `;
 document.head.appendChild(style);
 
-// Add pixel animation effect
+// Add pixel animation effect based on device capability
 function createPixel() {
+    // Skip on mobile to improve performance
+    if (isMobile) return;
+    
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
     pixel.style.left = Math.random() * window.innerWidth + 'px';
@@ -107,7 +307,36 @@ function createPixel() {
     });
 }
 
-setInterval(createPixel, 2000);
+// Reduce frequency on mobile
+const pixelInterval = isMobile ? 5000 : 2000;
+setInterval(createPixel, pixelInterval);
+
+// Optimize animations for battery and performance
+function optimizeForPerformance() {
+    if (isMobile) {
+        // Reduce animations on mobile
+        document.body.classList.add('reduced-motion');
+        
+        // Add CSS for reduced motion
+        const performanceStyles = document.createElement('style');
+        performanceStyles.textContent = `
+            .reduced-motion * {
+                transition-duration: 0.3s !important;
+                animation-duration: 0.3s !important;
+            }
+            
+            .reduced-motion .floating-element,
+            .reduced-motion .section-shape,
+            .reduced-motion .tech-circle {
+                animation: none !important;
+            }
+        `;
+        document.head.appendChild(performanceStyles);
+    }
+}
+
+// Run optimization on page load
+window.addEventListener('load', optimizeForPerformance);
 
 // Game Variables
 let score = 0;
