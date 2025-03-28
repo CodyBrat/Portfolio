@@ -4854,8 +4854,8 @@ textarea.form-input {
 .projects-section {
     padding: 6rem 0;
     position: relative;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-color-alt) 100%);
 }
 
 .projects-section::before {
@@ -4865,36 +4865,54 @@ textarea.form-input {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(var(--primary-rgb), 0.1) 0%, transparent 50%);
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(103, 0, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 40%);
     pointer-events: none;
 }
 
-.section-subtitle {
+.pixel-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem;
     text-align: center;
-    color: var(--text-color-alt);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(103, 0, 255, 0.5);
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.section-subtitle {
+    color: #a0a0a0;
+    text-align: center;
     font-size: 1.1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
+    animation: fadeInUp 0.6s ease 0.2s forwards;
 }
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     padding: 1rem;
+    perspective: 1000px;
 }
 
 .project-card {
     position: relative;
-    background: var(--card-bg);
+    background: rgba(20, 20, 35, 0.8);
+    border: 1px solid rgba(103, 0, 255, 0.2);
     border-radius: 20px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.6s ease forwards;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:nth-child(1) { animation-delay: 0.2s; }
@@ -4903,15 +4921,120 @@ textarea.form-input {
 .project-card:nth-child(4) { animation-delay: 0.8s; }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(103, 0, 255, 0.5);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(103, 0, 255, 0.3);
+}
+
+.project-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.project-category {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(103, 0, 255, 0.1);
+    color: #8a2be2;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(103, 0, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-category {
+    background: rgba(103, 0, 255, 0.2);
+    border-color: rgba(103, 0, 255, 0.5);
+}
+
+.project-title {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #fff, #a0a0a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-title {
+    background: linear-gradient(45deg, #fff, #8a2be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-description {
+    color: #a0a0a0;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-badge {
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-badge:hover {
+    background: rgba(103, 0, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(103, 0, 255, 0.5);
+    box-shadow: 0 0 15px rgba(103, 0, 255, 0.3);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background: rgba(103, 0, 255, 0.1);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(103, 0, 255, 0.3);
+}
+
+.project-link:hover {
+    background: rgba(103, 0, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(103, 0, 255, 0.5);
+    box-shadow: 0 0 20px rgba(103, 0, 255, 0.4);
+}
+
+.project-link i {
+    font-size: 1.1rem;
 }
 
 .project-image {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 250px;
     overflow: hidden;
+    border-radius: 15px;
+    margin-top: 1.5rem;
 }
 
 .project-image img {
@@ -4931,10 +5054,11 @@ textarea.form-input {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(var(--primary-rgb), 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 20, 0.2),
+        rgba(10, 10, 20, 0.8)
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -4943,94 +5067,10 @@ textarea.form-input {
     opacity: 1;
 }
 
-.project-links {
-    display: flex;
-    gap: 1rem;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-links {
-    transform: translateY(0);
-}
-
-.project-link {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: var(--bg-color);
-    color: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.project-link:hover {
-    transform: translateY(-3px);
-    background: var(--primary-color);
-    color: var(--bg-color);
-}
-
-.project-content {
-    padding: 1.5rem;
-}
-
-.project-category {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    background: rgba(var(--primary-rgb), 0.1);
-    color: var(--primary-color);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.project-card:hover .project-category {
-    background: rgba(var(--primary-rgb), 0.2);
-}
-
-.project-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-    color: var(--text-color);
-    transition: color 0.3s ease;
-}
-
-.project-description {
-    color: var(--text-color-alt);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tech-badge {
-    padding: 0.3rem 0.8rem;
-    background: var(--bg-color-alt);
-    color: var(--text-color);
-    border-radius: 15px;
-    font-size: 0.85rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.tech-badge:hover {
-    transform: translateY(-2px);
-    background: var(--primary-color);
-    color: var(--bg-color);
-}
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -5040,22 +5080,34 @@ textarea.form-input {
 
 @media (max-width: 768px) {
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pixel-title {
+        font-size: 2rem;
     }
 
     .project-title {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .project-description {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+    }
+
+    .project-image {
+        height: 200px;
     }
 }
 
 @media (max-width: 480px) {
     .projects-section {
         padding: 4rem 0;
+    }
+
+    .pixel-title {
+        font-size: 1.5rem;
     }
 
     .section-subtitle {
@@ -5068,7 +5120,16 @@ textarea.form-input {
     }
 
     .project-content {
-        padding: 1.2rem;
+        padding: 1.5rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-link {
+        width: 100%;
+        justify-content: center;
     }
 }
 
