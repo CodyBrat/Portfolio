@@ -1,3 +1,45 @@
+// Background parallax effect
+const parallaxBackground = document.querySelector('.parallax-background');
+const gradientOrbs = document.querySelectorAll('.gradient-orb');
+let isParallaxSupported = window.innerWidth > 768;
+
+// Disable parallax on mobile devices for performance
+function checkParallaxSupport() {
+    isParallaxSupported = window.innerWidth > 768 && 
+                         !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+}
+
+// Run check on load and resize
+window.addEventListener('load', checkParallaxSupport);
+window.addEventListener('resize', checkParallaxSupport);
+
+// Optimized parallax effect with debounce and requestAnimationFrame
+let ticking = false;
+document.addEventListener('mousemove', (e) => {
+    if (!isParallaxSupported || !parallaxBackground) return;
+    
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            
+            // Subtle movement for the background
+            parallaxBackground.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+            
+            // Different movement amounts for each orb to create depth
+            if (gradientOrbs.length > 0) {
+                gradientOrbs[0].style.transform = `translate(${x * -30}px, ${y * -30}px)`;
+                if (gradientOrbs[1]) gradientOrbs[1].style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+                if (gradientOrbs[2]) gradientOrbs[2].style.transform = `translate(${x * -10}px, ${y * -10}px)`;
+            }
+            
+            ticking = false;
+        });
+        
+        ticking = true;
+    }
+});
+
 // Cursor follower with device detection
 const cursor = document.querySelector('.cursor-follower');
 let isMobile = false;
@@ -17,6 +59,11 @@ function detectMobile() {
 // Run detection on load and resize
 window.addEventListener('load', detectMobile);
 window.addEventListener('resize', detectMobile);
+
+// Set dark theme as default
+document.addEventListener('DOMContentLoaded', function() {
+    document.documentElement.setAttribute('data-theme', 'dark');
+});
 
 // Only track mouse on desktop
 if (cursor) {
@@ -178,6 +225,17 @@ if (contactForm) {
 
 // Lazy loading for images
 const lazyLoadImages = () => {
+    // Get all lazy load images
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    
+    // For project images, load them immediately
+    const projectImages = document.querySelectorAll('.project-img[data-src]');
+    projectImages.forEach(img => {
+        img.src = img.dataset.src;
+        img.classList.add('loaded');
+    });
+    
+    // For other images, use Intersection Observer if available
     if ('IntersectionObserver' in window) {
         const imgObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -190,13 +248,13 @@ const lazyLoadImages = () => {
             });
         });
         
-        // Observe all images with data-src attribute
-        document.querySelectorAll('img[data-src]').forEach(img => {
+        // Observe all non-project images with data-src attribute
+        document.querySelectorAll('img[data-src]:not(.project-img)').forEach(img => {
             imgObserver.observe(img);
         });
     } else {
         // Fallback for browsers without IntersectionObserver
-        document.querySelectorAll('img[data-src]').forEach(img => {
+        lazyImages.forEach(img => {
             img.src = img.dataset.src;
         });
     }
@@ -556,4 +614,263 @@ particleStyles.textContent = `
         }
     }
 `;
-document.head.appendChild(particleStyles); 
+document.head.appendChild(particleStyles);
+
+// Animate stats counter when in view
+function animateCounters() {
+    const statsSection = document.querySelector('.skills-stats');
+    if (!statsSection) return;
+    
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let animated = false;
+    
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animated = true;
+                
+                statNumbers.forEach(counter => {
+                    counter.classList.add('count-animation');
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const duration = 2000; // 2 seconds
+                    
+                    // Start from 0 or a percentage of the target for larger numbers
+                    let start = target > 100 ? Math.floor(target * 0.7) : 0;
+                    const increment = (target - start) / (duration / 16); // 60fps
+                    
+                    const updateCounter = () => {
+                        const current = parseFloat(counter.innerText);
+                        const nextValue = Math.ceil(current + increment);
+                        
+                        if (nextValue <= target) {
+                            counter.innerText = nextValue + (counter.innerText.includes('+') ? '+' : '');
+                            setTimeout(updateCounter, 16);
+                        } else {
+                            counter.innerText = target + (counter.innerText.includes('+') ? '+' : '');
+                        }
+                    };
+                    
+                    counter.innerText = start + (counter.innerText.includes('+') ? '+' : '');
+                    setTimeout(updateCounter, 16);
+                });
+                
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    statsObserver.observe(statsSection);
+}
+
+// Animate skills level bars
+function animateSkillBars() {
+    const skillsSection = document.querySelector('.skills-cards');
+    if (!skillsSection) return;
+    
+    const levelFills = document.querySelectorAll('.level-fill');
+    let animated = false;
+    
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animated = true;
+                
+                levelFills.forEach(fill => {
+                    const width = fill.style.width;
+                    fill.style.width = '0';
+                    
+                    setTimeout(() => {
+                        fill.style.width = width;
+                    }, 200);
+                });
+                
+                skillsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    skillsObserver.observe(skillsSection);
+}
+
+// Initialize animations when the page is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    animateCounters();
+    animateSkillBars();
+});
+
+// Project cards animations and interactions
+function setupProjectCards() {
+    const projectCards = document.querySelectorAll('.project-card');
+    if (!projectCards.length) return;
+    
+    // Optimize by checking device capabilities first
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    
+    // Animate project stats with throttling
+    const statValues = document.querySelectorAll('.stat-value');
+    const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate stats with reduced complexity on low-end devices
+                statValues.forEach(statValue => {
+                    const value = statValue.innerText;
+                    const isPlus = value.includes('+');
+                    const numValue = parseFloat(value.replace('+', ''));
+                    
+                    // Use fewer steps for animation on low-end devices
+                    const steps = isLowEndDevice ? 10 : 40;
+                    
+                    // Start from 0 and count up
+                    let currentValue = 0;
+                    const increment = numValue / steps;
+                    
+                    const counter = setInterval(() => {
+                        if (currentValue >= numValue) {
+                            clearInterval(counter);
+                            statValue.innerText = value; // Set back to original formatted value
+                        } else {
+                            currentValue += increment;
+                            statValue.innerText = Math.floor(currentValue) + (isPlus ? '+' : '');
+                        }
+                    }, isLowEndDevice ? 50 : 30); // Slower interval for low-end devices
+                });
+                
+                statObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    // Observe any stat item to trigger animation
+    const statItems = document.querySelectorAll('.stat-item');
+    if (statItems.length) {
+        statObserver.observe(statItems[0]);
+    }
+    
+    // Skip complex animations entirely if preferred-reduced-motion is set
+    if (isReducedMotion) {
+        return;
+    }
+    
+    // Performance optimization: use a debounce for mouse move
+    let ticking = false;
+    
+    // Project cards hover effects - simplified for better performance
+    projectCards.forEach(card => {
+        // Cache DOM queries outside event handlers
+        const highlight = card.querySelector('.project-highlight');
+        const category = card.querySelector('.project-category');
+        const title = card.querySelector('.project-title');
+        const tags = card.querySelector('.project-tags');
+        const buttons = card.querySelectorAll('.project-btn');
+        
+        // Add a simplified 3D tilt effect on mouse move
+        card.addEventListener('mousemove', e => {
+            if (isMobile || isLowEndDevice) return; // Skip on mobile or low-end devices
+            
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Calculate rotation based on mouse position - reduced effect
+                    const tiltX = (y / rect.height - 0.5) * 5; // 5 degrees max tilt (reduced from 10)
+                    const tiltY = (0.5 - x / rect.width) * 5;
+                    
+                    // Apply the 3D tilt effect with simplified transform
+                    card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-10px)`;
+                    
+                    // Update highlight position
+                    if (highlight) {
+                        highlight.style.setProperty('--x', `${(x / rect.width) * 100}%`);
+                        highlight.style.setProperty('--y', `${(y / rect.height) * 100}%`);
+                        highlight.style.opacity = '1';
+                    }
+                    
+                    // Only apply simple transforms to improve performance
+                    if (category) category.style.transform = `translateZ(30px)`;
+                    if (title) title.style.transform = `translateZ(20px)`;
+                    
+                    ticking = false;
+                });
+                
+                ticking = true;
+            }
+        });
+        
+        // Reset the card when mouse leaves
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            
+            // Reset highlight
+            if (highlight) {
+                highlight.style.opacity = '0';
+            }
+            
+            // Reset all transformed elements
+            if (category) category.style.transform = '';
+            if (title) title.style.transform = '';
+            if (tags) tags.style.transform = '';
+            buttons.forEach(btn => btn.style.transform = '');
+        });
+    });
+}
+
+// Initialize project section enhancements when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Detect device capabilities
+    const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    
+    setupProjectCards();
+    
+    // Make sure lazy loading is initialized
+    lazyLoadImages();
+    
+    // Target all project section animations to activate when scrolled into view
+    const projectsSection = document.querySelector('.projects-section');
+    if (projectsSection) {
+        const projectCards = projectsSection.querySelectorAll('.project-card');
+        
+        const projectsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                // Add staggered animation classes to each card, but with fewer cards animated simultaneously
+                const batchSize = isLowEndDevice ? 2 : 4;
+                
+                // Process cards in batches for smoother performance
+                for (let i = 0; i < projectCards.length; i++) {
+                    const batchIndex = Math.floor(i / batchSize);
+                    setTimeout(() => {
+                        projectCards[i].classList.add('card-appear');
+                    }, 150 * batchIndex); // Longer delay between batches
+                }
+                
+                projectsObserver.unobserve(projectsSection);
+            }
+        }, { threshold: 0.1 });
+        
+        projectsObserver.observe(projectsSection);
+        
+        // Simplified animation styles
+        const animationStyles = document.createElement('style');
+        animationStyles.textContent = `
+            .project-card {
+                opacity: 0;
+                transform: translateY(20px);
+                will-change: transform, opacity;
+            }
+            
+            .card-appear {
+                animation: cardAppear 0.5s ease-out forwards;
+            }
+            
+            @keyframes cardAppear {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(animationStyles);
+    }
+}); 

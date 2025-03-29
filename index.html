@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyabrata's Portfolio</title>
+    <title>Priyabrata Singh - Creative Developer Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,22 +14,28 @@
     <!-- Add preload for critical resources -->
     <link rel="preload" href="images/profile.jpeg" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta name="description" content="Creative Developer Portfolio of Priyabrata Singh - Building beautiful digital experiences">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
 </head>
 <body>
-    <button class="theme-toggle" aria-label="Toggle theme">
-        <i class="fas fa-sun"></i>
-    </button>
-
-    <div class="grid-background"></div>
-    <div class="interactive-background">
-        <div class="geometric-shape shape-1"></div>
-        <div class="geometric-shape shape-2"></div>
-        <div class="geometric-shape shape-3"></div>
+    <!-- Modern SaaS Background -->
+    <div class="saas-background"></div>
+    <div class="parallax-background">
+        <div class="gradient-orb gradient-orb-1"></div>
+        <div class="gradient-orb gradient-orb-2"></div>
+        <div class="gradient-orb gradient-orb-3"></div>
+        <div class="dot dot-1"></div>
+        <div class="dot dot-2"></div>
+        <div class="dot dot-3"></div>
+        <div class="dot dot-4"></div>
+        <div class="dot dot-5"></div>
+        <div class="dot dot-6"></div>
             </div>
-    <div class="floating-element float-1"></div>
-    <div class="floating-element float-2"></div>
-    <div class="glow-effect"></div>
-
+    <div class="grid-background"></div>
+    <div class="noise-overlay"></div>
+    
     <div class="loading">
         <div class="loading-pixel"></div>
         <div class="loading-pixel"></div>
@@ -121,10 +128,7 @@
 
     <!-- About Section -->
     <section id="about" class="section about-section">
-        <div class="section-shapes">
-            <div class="section-shape shape-1"></div>
-            <div class="section-shape shape-2"></div>
-        </div>
+        <!-- Removing background shapes -->
         <div class="section-container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -161,99 +165,189 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills & Experience Section -->
     <section id="skills" class="section skills-section">
-        <div class="section-shapes">
-            <div class="section-shape shape-1"></div>
-            <div class="section-shape shape-2"></div>
-        </div>
+        <!-- Removing background shapes -->
         <div class="section-container">
             <h2 class="section-title">Skills & Experience</h2>
-            <div class="skills-container">
-                <div class="skills-meters">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">Frontend Development</span>
-                            <span class="skill-percentage">95%</span>
+            <p class="section-subtitle">My technical expertise and professional journey</p>
+            
+            <div class="skills-dashboard">
+                <!-- Skills Cards -->
+                <div class="skills-cards">
+                    <div class="skill-card glass-effect">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                        <h3 class="skill-title">Frontend Development</h3>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="level-percentage">95%</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">React Development</span>
-                            <span class="skill-percentage">90%</span>
+                    
+                    <div class="skill-card glass-effect">
+                        <div class="skill-icon">
+                            <i class="fab fa-react"></i>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
+                        <h3 class="skill-title">React Development</h3>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="level-percentage">90%</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Redux</span>
+                            <span class="skill-tag">Hooks</span>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">UI/UX Design</span>
-                            <span class="skill-percentage">85%</span>
+                    
+                    <div class="skill-card glass-effect">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                </div>
+                        <h3 class="skill-title">UI/UX Design</h3>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="level-percentage">85%</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe XD</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">Game Development</span>
-                            <span class="skill-percentage">75%</span>
-                </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                </div>
+                    
+                    <div class="skill-card glass-effect">
+                        <div class="skill-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="skill-title">Game Development</h3>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="level-percentage">75%</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">Unreal Engine</span>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Experience Timeline -->
+                <div class="experience-container glass-effect">
+                    <h3 class="experience-heading">Professional Experience</h3>
+                    
+                    <div class="experience-timeline">
+                        <div class="experience-item">
+                            <div class="experience-marker"></div>
+                            <div class="experience-content">
+                                <div class="experience-date">2023 - Present</div>
+                                <h4 class="experience-title">Core Member</h4>
+                                <div class="experience-company">
+                                    <i class="fas fa-building"></i> E-Cell (SharkSphere)
+                                </div>
+                                <p class="experience-description">
+                                    Leading web development initiatives and contributing to club website development. 
+                                    Implementing modern design patterns and ensuring responsive layouts.
+                                </p>
+                                <div class="experience-tags">
+                                    <span class="experience-tag">React</span>
+                                    <span class="experience-tag">JavaScript</span>
+                                    <span class="experience-tag">CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-marker"></div>
+                            <div class="experience-content">
+                                <div class="experience-date">2023 - Present</div>
+                                <h4 class="experience-title">Core Member</h4>
+                                <div class="experience-company">
+                                    <i class="fas fa-robot"></i> Robotics Club (IRIS)
+                                </div>
+                                <p class="experience-description">
+                                    Developing interactive web applications for robotics projects. 
+                                    Creating user interfaces for robot control systems.
+                                </p>
+                                <div class="experience-tags">
+                                    <span class="experience-tag">JavaScript</span>
+                                    <span class="experience-tag">WebSocket</span>
+                                    <span class="experience-tag">Three.js</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-marker"></div>
+                            <div class="experience-content">
+                                <div class="experience-date">2022 - Present</div>
+                                <h4 class="experience-title">Freelance Developer</h4>
+                                <div class="experience-company">
+                                    <i class="fas fa-laptop-code"></i> Fiverr
+                                </div>
+                                <p class="experience-description">
+                                    Building custom websites and applications for clients worldwide.
+                                    Specializing in modern web technologies and creative solutions.
+                                </p>
+                                <div class="experience-tags">
+                                    <span class="experience-tag">Frontend</span>
+                                    <span class="experience-tag">UI/UX</span>
+                                    <span class="experience-tag">React</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Stats -->
+            <div class="skills-stats">
+                <div class="stat-card glass-effect">
+                    <div class="stat-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="stat-number" data-count="25">25+</div>
+                    <div class="stat-label">Projects Completed</div>
+    </div>
 
-                <div class="experience-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Core Member</h3>
-                        <div class="timeline-company">E-Cell (SharkSphere)</div>
-                        <p class="timeline-description">
-                            Leading web development initiatives and contributing to club website development. 
-                            Implementing modern design patterns and ensuring responsive layouts.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="timeline-tech-item">React</span>
-                            <span class="timeline-tech-item">JavaScript</span>
-                            <span class="timeline-tech-item">CSS</span>
-                </div>
+                <div class="stat-card glass-effect">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Core Member</h3>
-                        <div class="timeline-company">Robotics Club (IRIS)</div>
-                        <p class="timeline-description">
-                            Developing interactive web applications for robotics projects. 
-                            Creating user interfaces for robot control systems.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="timeline-tech-item">JavaScript</span>
-                            <!-- <span class="timeline-tech-item">WebSocket</span> -->
-                            <span class="timeline-tech-item">Node.js</span>
-                    </div>
+                    <div class="stat-number" data-count="15">15+</div>
+                    <div class="stat-label">Happy Clients</div>
                 </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022 - Present</div>
-                        <h3 class="timeline-title">Freelance Developer</h3>
-                        <div class="timeline-company">Fiverr</div>
-                        <p class="timeline-description">
-                            Building custom websites and applications for clients worldwide.
-                            Specializing in modern web technologies and creative solutions.
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="timeline-tech-item">Frontend</span>
-                            <span class="timeline-tech-item">UI/UX</span>
-                            <span class="timeline-tech-item">React</span>
-                </div>
+                
+                <div class="stat-card glass-effect">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
                     </div>
+                    <div class="stat-number" data-count="5">5+</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                
+                <div class="stat-card glass-effect">
+                    <div class="stat-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="stat-number" data-count="500">500+</div>
+                    <div class="stat-label">Cups of Coffee</div>
                 </div>
             </div>
         </div>
@@ -261,122 +355,146 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
+        <!-- Removing background shapes -->
         <div class="section-container">
-            <h2 class="section-title pixel-title">Featured Projects</h2>
-            <p class="section-subtitle">Explore my latest work and creative endeavors</p>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Solutions I've designed, built, and shipped</p>
             
-            <div class="projects-grid">
-                <!-- SharkSphere Platform -->
-                <article class="project-card">
-                    <div class="project-content">
+            <div class="projects-dashboard">
+                <!-- Project Card 1 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <img src="images/image.png" alt="SharkSphere Platform" class="project-img">
                         <span class="project-category">Full Stack Development</span>
+                    </div>
+                    <div class="project-body">
                         <h3 class="project-title">SharkSphere Platform</h3>
                         <p class="project-description">A comprehensive entrepreneurship management platform with real-time analytics, interactive dashboards, and collaboration tools.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">CSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="View Live Demo">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link" aria-label="View Source Code">
-                                <i class="fab fa-github"></i>
-                                <span>Source Code</span>
-                            </a>
+                    <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">CSS</span>
                         </div>
                     </div>
-                    <div class="project-image">
-                        <img src="images/image.png" alt="SharkSphere Platform">
-                        <div class="project-overlay"></div>
+                    <div class="project-footer">
+                        <a href="#" class="project-btn primary-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-btn secondary-btn">
+                            <i class="fab fa-github"></i>
+                            Code
+                        </a>
                     </div>
-                </article>
+                </div>
 
-                <!-- IRIS Robotics -->
-                <article class="project-card">
-                    <div class="project-content">
+                <!-- Project Card 2 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <img src="images/robotics.jpg" alt="IRIS Robotics Platform" class="project-img">
                         <span class="project-category">Robotics & IoT</span>
+                    </div>
+                    <div class="project-body">
                         <h3 class="project-title">IRIS Robotics Platform</h3>
                         <p class="project-description">Advanced robotics control system featuring real-time sensor integration, computer vision, and autonomous navigation capabilities.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">IoT</span>
-                            <span class="tech-badge">ROS</span>
-                            <span class="tech-badge">Computer Vision</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Watch Demo">
-                                <i class="fas fa-play"></i>
-                                <span>Watch Demo</span>
-                            </a>
-                            <a href="#" class="project-link" aria-label="View Source Code">
-                                <i class="fab fa-github"></i>
-                                <span>Source Code</span>
-                            </a>
+                        <div class="project-tags">
+                            <span class="project-tag">IoT</span>
+                            <span class="project-tag">ROS</span>
+                            <span class="project-tag">Computer Vision</span>
                         </div>
                     </div>
-                    <div class="project-image">
-                        <img src="images/robotics.jpg" alt="IRIS Robotics Platform">
-                        <div class="project-overlay"></div>
+                    <div class="project-footer">
+                        <a href="#" class="project-btn primary-btn">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </a>
+                        <a href="#" class="project-btn secondary-btn">
+                            <i class="fab fa-github"></i>
+                            Code
+                        </a>
                     </div>
-                </article>
+                </div>
 
-                <!-- Pixel Adventure -->
-                <article class="project-card">
-                    <div class="project-content">
+                <!-- Project Card 3 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <img src="images/game.jpg" alt="Pixel Adventure Game" class="project-img">
                         <span class="project-category">Game Development</span>
+                    </div>
+                    <div class="project-body">
                         <h3 class="project-title">Pixel Adventure</h3>
                         <p class="project-description">An immersive 2D platformer game featuring procedural level generation, dynamic lighting, and particle systems.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Unity</span>
-                            <span class="tech-badge">C#</span>
-                            <span class="tech-badge">2D Graphics</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Play Game">
-                                <i class="fas fa-gamepad"></i>
-                                <span>Play Game</span>
-                            </a>
-                            <a href="#" class="project-link" aria-label="View Source Code">
-                                <i class="fab fa-github"></i>
-                                <span>Source Code</span>
-                            </a>
+                    <div class="project-tags">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">C#</span>
+                            <span class="project-tag">2D Graphics</span>
                         </div>
                     </div>
-                    <div class="project-image">
-                        <img src="images/game.jpg" alt="Pixel Adventure Game">
-                        <div class="project-overlay"></div>
+                    <div class="project-footer">
+                        <a href="#" class="project-btn primary-btn">
+                            <i class="fas fa-gamepad"></i>
+                            Play Game
+                        </a>
+                        <a href="#" class="project-btn secondary-btn">
+                            <i class="fab fa-github"></i>
+                            Code
+                        </a>
                     </div>
-                </article>
+                </div>
 
-                <!-- Modern Web Apps -->
-                <article class="project-card">
-                    <div class="project-content">
+                <!-- Project Card 4 -->
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <img src="images/webapp.jpg" alt="Modern Web Applications" class="project-img">
                         <span class="project-category">Web Development</span>
+                    </div>
+                    <div class="project-body">
                         <h3 class="project-title">Modern Web Applications</h3>
                         <p class="project-description">Collection of high-performance web applications built with React and modern web technologies.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">CSS</span>
+                    <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">CSS</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="View Projects">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>View Projects</span>
-                            </a>
-                            <a href="#" class="project-link" aria-label="View Source Code">
-                                <i class="fab fa-github"></i>
-                                <span>Source Code</span>
-                            </a>
-                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="project-btn primary-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Projects
+                        </a>
+                        <a href="#" class="project-btn secondary-btn">
+                            <i class="fab fa-github"></i>
+                            Code
+                        </a>
+                    </div>
+                </div>
             </div>
-                    <div class="project-image">
-                        <img src="images/webapp.jpg" alt="Modern Web Applications">
-                        <div class="project-overlay"></div>
-            </div>
-                </article>
+            
+            <!-- Project Stats -->
+            <div class="project-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="stat-value">25+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value">15+</div>
+                    <div class="stat-text">Client Collaborations</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-value">4.9</div>
+                    <div class="stat-text">Client Rating</div>
+                </div>
             </div>
         </div>
     </section>
@@ -444,10 +562,7 @@
             </form>
         </div>
         
-        <div class="contact-bg">
-            <div class="contact-shape contact-shape-1"></div>
-            <div class="contact-shape contact-shape-2"></div>
-        </div>
+        <!-- Removing contact background -->
     </section>
 
     <footer class="pixel-footer">
@@ -508,33 +623,8 @@
             document.querySelector('.loading').style.display = 'none';
         });
 
-        // Theme Toggle - No changes needed, it's not performance intensive
-        const themeToggle = document.querySelector('.theme-toggle');
-        const html = document.documentElement;
-        const icon = themeToggle.querySelector('i');
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            document.body.classList.add('theme-transition');
-            setTimeout(() => {
-                document.body.classList.remove('theme-transition');
-            }, 500);
-            
-            updateThemeIcon(newTheme);
-        });
-
-        function updateThemeIcon(theme) {
-            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-        }
+        // Set dark theme as default
+        document.documentElement.setAttribute('data-theme', 'dark');
 
         // Optimized cursor follower - using transform instead of left/top
         const cursor = document.querySelector('.cursor-follower');
