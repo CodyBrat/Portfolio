@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>priyomanifesto</title>
     <!-- <link rel="icon" href="images/favicon4.jpg" type="image/jpg" sizes="32x32">
     <link rel="icon" href="images/favicon4.jpg" type="image/jpg" sizes="48x48">
@@ -478,9 +478,9 @@
                             <i class="fab fa-github"></i>
                             Code
                         </a>
-                    </div>
                 </div>
-
+            </div>
+            
                 <!-- Project Card 5 -->
                 <div class="project-card glass-effect">
                     <div class="project-header">
@@ -494,7 +494,7 @@
                             <span class="project-tag">Figma</span>
                             <span class="project-tag">UI/UX</span>
                             <!-- <span class="project-tag">CSS</span> -->
-                        </div>
+                </div>
                     </div>
                     <div class="project-footer">
                         <a href="https://www.figma.com/proto/nbTtlZbuKgh5N7HRetufYi/priyabrata-singh?node-id=48-125&p=f&t=4RcjLWlK7EvONuPJ-1&scaling=scale-down&content-scaling=fixed&page-id=28%3A4" class="project-btn primary-btn">
@@ -505,8 +505,8 @@
                             <i class="fab fa-github"></i>
                             Code
                         </a> -->
-                    </div>
                 </div>
+                    </div>
             </div>
             
             <!-- Demon Slayer Water Breathing Animation - Minimalist -->
@@ -628,19 +628,24 @@
                 </div>
             </div>
             
-            <form class="contact-form">
+            <form class="contact-form" action="https://formsubmit.co/priyabrata.singh@adypu.edu.in" method="POST">
+                <input type="hidden" name="_subject" value="New Portfolio Contact">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://priyomanifesto.vercel.app/thank-you.html">
+                
                 <div class="form-group">
-                    <input type="text" class="form-input" id="name" placeholder=" " required>
+                    <input type="text" class="form-input" id="name" name="name" placeholder=" " required>
                     <label for="name" class="form-label">What's your name?</label>
                 </div>
                 
                 <div class="form-group">
-                    <input type="email" class="form-input" id="email" placeholder=" " required>
+                    <input type="email" class="form-input" id="email" name="email" placeholder=" " required>
                     <label for="email" class="form-label">What's your email?</label>
                 </div>
                 
                 <div class="form-group">
-                    <textarea class="form-input" id="message" placeholder=" " required></textarea>
+                    <textarea class="form-input" id="message" name="message" placeholder=" " required></textarea>
                     <label for="message" class="form-label">What's your vision?</label>
                 </div>
                 
@@ -730,6 +735,169 @@
             }
         }
 
+        /* Enhanced Responsive Styles */
+        @media (max-width: 991px) {
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-image {
+                margin-bottom: 2rem;
+            }
+            
+            .about-text {
+                padding: 0 1rem;
+            }
+            
+            .skills-dashboard {
+                flex-direction: column;
+            }
+            
+            .skills-cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .experience-container {
+                margin-top: 2rem;
+                width: 100%;
+            }
+            
+            .projects-dashboard {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .contact-form, .contact-info {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .pixel-nav {
+                padding: 0.5rem;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 0.7rem;
+                font-size: 0.8rem;
+            }
+            
+            .nav-links a i {
+                margin-right: 0.2rem;
+            }
+            
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .title-container {
+                padding: 1rem;
+                width: 100%;
+            }
+            
+            .name-text {
+                font-size: 2.5rem;
+            }
+            
+            .tech-stack {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .pixel-container {
+                padding: 1rem;
+            }
+            
+            .surrounding-elements {
+                display: none;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+            
+            .info-item {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-nav {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .skill-card {
+                padding: 1rem;
+            }
+            
+            .experience-item {
+                padding: 1rem;
+            }
+            
+            .experience-content {
+                padding-left: 1.5rem;
+            }
+            
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            
+            .form-input {
+                padding: 0.8rem;
+            }
+            
+            .submit-button {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            /* Fix for horizontal overflow */
+            .project-tags, .experience-tags, .skill-tags, .tech-tags {
+                flex-wrap: wrap;
+            }
+        }
+        
+        /* Fix for device orientation */
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            .hero {
+                min-height: 100vh;
+            }
+            
+            .section {
+                padding: 2rem 0;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
         /* Keep essential water breathing animations but optimize them */
         @keyframes waterSlash {
             0% {
@@ -779,6 +947,27 @@
                 text-shadow: 0 0 15px rgba(100, 86, 255, 1), 0 0 30px rgba(100, 86, 255, 0.6);
             }
         }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) {
+            a, button {
+                transition: none;
+            }
+            
+            .cursor-follower {
+                display: none;
+            }
+            
+            .project-btn, .email-button, .submit-button {
+                padding: 0.8rem 1.5rem;
+                margin: 0.3rem;
+            }
+            
+            .skill-card:hover, .project-card:hover {
+                transform: none !important;
+                box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7) !important;
+            }
+        }
     </style>
 
     <script>
@@ -795,24 +984,38 @@
             };
         }
 
+        // Detect mobile devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
         // Load handler
         window.addEventListener('load', () => {
             document.querySelector('.loading').style.display = 'none';
+            
+            // Fix for Android Chrome address bar
+            if (/Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent)) {
+                window.scrollTo(0, 1);
+            }
         });
 
         // Set dark theme as default
         document.documentElement.setAttribute('data-theme', 'dark');
 
-        // Optimized cursor follower - using transform instead of left/top
+        // Only enable cursor follower on non-touch devices
         const cursor = document.querySelector('.cursor-follower');
+        
+        if (cursor && !isMobile && window.matchMedia('(hover: hover)').matches) {
         const debouncedMouseMove = debounce((e) => {
             cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
         }, 10);
-
         document.addEventListener('mousemove', debouncedMouseMove);
+        } else if (cursor) {
+            cursor.style.display = 'none';
+        }
 
-        // Optimized parallax effect for title container
+        // Optimized parallax effect for title container - disable on mobile
         const container = document.querySelector('.title-container');
+        
+        if (container && !isMobile && window.matchMedia('(hover: hover)').matches) {
         const debouncedParallax = debounce((e) => {
             if (!container) return;
             const xAxis = (window.innerWidth / 2 - e.pageX) / 100;
@@ -828,20 +1031,24 @@
                 container.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
             }
         });
+        }
 
-        // Optimized floating elements
+        // Optimized floating elements - disable on mobile
         const float1 = document.querySelector('.float-1');
         const float2 = document.querySelector('.float-2');
+        
+        if ((float1 || float2) && !isMobile && window.matchMedia('(hover: hover)').matches) {
         const debouncedFloat = debounce((e) => {
-            if (!float1 || !float2) return;
+                if (!float1 && !float2) return;
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
             
-            float1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
-            float2.style.transform = `translate(${-x * 30}px, ${-y * 30}px)`;
+                if (float1) float1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+                if (float2) float2.style.transform = `translate(${-x * 30}px, ${-y * 30}px)`;
         }, 16);
 
         document.addEventListener('mousemove', debouncedFloat);
+        }
 
         // Optimized navigation active state
         const sections = document.querySelectorAll('section');
@@ -851,7 +1058,10 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
+                const sectionHeight = section.offsetHeight;
+                
+                // Improved scroll detection logic
+                if (pageYOffset >= sectionTop - window.innerHeight / 3) {
                     current = section.getAttribute('id');
                 }
             });
@@ -866,22 +1076,49 @@
 
         window.addEventListener('scroll', debouncedScroll);
 
-        // Smooth scroll for navigation
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
+        // Smooth scroll for navigation with polyfill for Safari
+        document.querySelectorAll('.nav-links a, .footer-link').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
+                
                 if (targetSection) {
+                    // Check if scrollIntoView with behavior is supported
+                    if ('scrollBehavior' in document.documentElement.style) {
                     targetSection.scrollIntoView({
                         behavior: 'smooth'
                     });
+                    } else {
+                        // Fallback for Safari and older browsers
+                        const startPosition = window.pageYOffset;
+                        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
+                        const distance = targetPosition - startPosition;
+                        const duration = 1000;
+                        let start = null;
+                        
+                        window.requestAnimationFrame(step);
+                        
+                        function step(timestamp) {
+                            if (!start) start = timestamp;
+                            const progress = timestamp - start;
+                            const easeInOutQuad = t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                            
+                            window.scrollTo(0, startPosition + distance * easeInOutQuad(Math.min(progress / duration, 1)));
+                            
+                            if (progress < duration) {
+                                window.requestAnimationFrame(step);
+                            }
+                        }
+                    }
                 }
             });
         });
 
-        // Optimized geometric shapes parallax
+        // Optimized geometric shapes parallax - disable on mobile
         const shapes = document.querySelectorAll('.geometric-shape');
+        
+        if (shapes.length > 0 && !isMobile && window.matchMedia('(hover: hover)').matches) {
         const debouncedShapes = debounce((e) => {
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
@@ -895,26 +1132,51 @@
         }, 16);
 
         document.addEventListener('mousemove', debouncedShapes);
+        }
 
-        // Optimized skill bars animation
+        // Optimized skill bars animation using Intersection Observer
         function animateSkills() {
-            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillBars = document.querySelectorAll('.level-fill');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const width = entry.target.getAttribute('style').split('width: ')[1].split('%')[0];
+                            entry.target.style.width = '0';
+                            setTimeout(() => {
+                                entry.target.style.width = width + '%';
+                            }, 100);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
             skillBars.forEach(bar => {
-                const targetWidth = bar.style.width;
-                bar.style.width = '0';
-                requestAnimationFrame(() => {
-                    bar.style.width = targetWidth;
+                    observer.observe(bar);
                 });
-            });
+            } else {
+                // Fallback for browsers without Intersection Observer
+                skillBars.forEach(bar => {
+                    const width = bar.getAttribute('style').split('width: ')[1].split('%')[0];
+                bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 500);
+                });
+            }
         }
 
         // Optimized timeline animation using Intersection Observer
         function animateTimeline() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineItems = document.querySelectorAll('.experience-item');
+            
+            if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.2 });
@@ -922,27 +1184,38 @@
             timelineItems.forEach(item => {
                 observer.observe(item);
             });
+            } else {
+                // Fallback for browsers without Intersection Observer
+                timelineItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, 300 * index);
+                });
+            }
         }
 
-        // Initialize animations
+        // Initialize animations when DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
             animateSkills();
             animateTimeline();
-        });
-
-        // Optimized skills section observer
-        const skillsSection = document.querySelector('.skills-section');
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkills();
-                }
+            
+            // Add passive listeners for better touch performance
+            const wheelOpts = { passive: true };
+            const touchOpts = { passive: true };
+            
+            document.addEventListener('wheel', null, wheelOpts);
+            document.addEventListener('touchstart', null, touchOpts);
+            
+            // Handle orientation changes
+            window.addEventListener('orientationchange', () => {
+                // Small timeout to ensure the browser has finished orientation change
+                setTimeout(() => {
+                    if (/Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent)) {
+                        window.scrollTo(0, 1);
+                    }
+                }, 200);
             });
-        }, { threshold: 0.2 });
-
-        if (skillsSection) {
-            skillsObserver.observe(skillsSection);
-        }
+        });
 
         // Updated Demon Slayer Water Breathing Animation - Optimized for performance
         document.addEventListener('DOMContentLoaded', function() {
@@ -958,9 +1231,9 @@
             }
 
             // Check device performance
-            const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
-            const elementCount = isLowEndDevice ? 3 : 5; // Reduced from 8 to 5
-            const particleCount = isLowEndDevice ? 5 : 8; // Reduced from 15 to 8
+            const isLowEndDevice = isMobile || navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+            const elementCount = isLowEndDevice ? 2 : 5; // Further reduced for mobile devices
+            const particleCount = isLowEndDevice ? 3 : 8;
             
             // Create water slashes - reduced count and simplified
             function createWaterSlash() {
@@ -989,7 +1262,7 @@
                     transform: translateY(-50%) rotate(${rotation}deg);
                     animation: waterSlash 15s linear infinite;
                     z-index: 1;
-                    will-change: transform;
+                    will-change: transform, opacity;
                 `;
                 
                 slash.style.animationDelay = `${Math.floor(Math.random() * 8)}s`;
@@ -1020,7 +1293,7 @@
                     filter: blur(1px);
                     box-shadow: 0 0 ${size}px ${colorValue};
                     animation: waterParticle 10s ease-in-out infinite;
-                    will-change: transform;
+                    will-change: transform, opacity;
                 `;
                 
                 particle.style.animationDelay = `${Math.floor(Math.random() * 8)}s`;
@@ -1047,43 +1320,9 @@
                 container.appendChild(staticSlash);
             }
             
-            // Create simplified animation styles with enhanced anime-style effects
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes waterSlash {
-                    0% {
-                        transform: translateY(-50%) rotate(0deg) scale(0.5);
-                        opacity: 0;
-                    }
-                    30% {
-                        opacity: 0.7;
-                    }
-                    100% {
-                        transform: translateY(-50%) rotate(360deg) scale(2);
-                        opacity: 0;
-                    }
-                }
-                
-                @keyframes waterParticle {
-                    0% {
-                        transform: translateY(0) scale(0.8);
-                        opacity: 0.3;
-                    }
-                    50% {
-                        transform: translateY(-30px) scale(1.1);
-                        opacity: 0.7;
-                    }
-                    100% {
-                        transform: translateY(0) scale(0.8);
-                        opacity: 0.3;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
             // Create elements - with reduced count for better performance
-            const enhancedElementCount = isLowEndDevice ? 3 : 5;
-            const enhancedParticleCount = isLowEndDevice ? 5 : 8;
+            const enhancedElementCount = isLowEndDevice ? 2 : 5;
+            const enhancedParticleCount = isLowEndDevice ? 3 : 8;
             
             for (let i = 0; i < enhancedElementCount; i++) {
                 createWaterSlash();
@@ -1096,20 +1335,43 @@
             // Enhanced hover effect for anime-style interaction
             const projectsButton = document.querySelector('a[href="https://github.com/CodyBrat"]');
             if (projectsButton) {
-                projectsButton.addEventListener('mouseenter', function() {
-                    this.style.background = 'rgba(143, 86, 255, 0.3)';
-                    this.style.boxShadow = '0 0 25px rgba(143, 86, 255, 0.8)';
-                    this.style.transform = 'translateY(-3px)';
-                });
-                
-                projectsButton.addEventListener('mouseleave', function() {
-                    this.style.background = 'rgba(99, 102, 241, 0.1)';
-                    this.style.boxShadow = '0 0 15px rgba(100, 86, 255, 0.5)';
-                    this.style.transform = 'translateY(0)';
-                });
+                // Only add hover effects on non-touch devices
+                if (!isMobile && window.matchMedia('(hover: hover)').matches) {
+                    projectsButton.addEventListener('mouseenter', function() {
+                        this.style.background = 'rgba(143, 86, 255, 0.3)';
+                        this.style.boxShadow = '0 0 25px rgba(143, 86, 255, 0.8)';
+                        this.style.transform = 'translateY(-3px)';
+                    });
+                    
+                    projectsButton.addEventListener('mouseleave', function() {
+                        this.style.background = 'rgba(99, 102, 241, 0.1)';
+                        this.style.boxShadow = '0 0 15px rgba(100, 86, 255, 0.5)';
+                        this.style.transform = 'translateY(0)';
+                    });
+                } else {
+                    // Add active state for touch devices
+                    projectsButton.addEventListener('touchstart', function() {
+                        this.style.background = 'rgba(143, 86, 255, 0.3)';
+                    });
+                    
+                    projectsButton.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.style.background = 'rgba(99, 102, 241, 0.1)';
+                        }, 300);
+                    });
+                }
             }
+            
+            // Fix iOS Safari 100vh issue
+            function setVhProperty() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            setVhProperty();
+            window.addEventListener('resize', setVhProperty);
         });
     </script>
     <script src="js/main.js"></script>
 </body>
-</html>
+</html> 
