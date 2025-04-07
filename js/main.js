@@ -208,19 +208,6 @@ if (contactForm) {
             input.parentElement.classList.remove('touch-active');
         });
     });
-    
-    // Form submission
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add your form submission logic here
-        alert('Message sent successfully!');
-        contactForm.reset();
-        
-        // Reset active states
-        formInputs.forEach(input => {
-            input.parentElement.classList.remove('input-focused');
-        });
-    });
 }
 
 // Lazy loading for images

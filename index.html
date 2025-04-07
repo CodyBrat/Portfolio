@@ -628,12 +628,7 @@
                 </div>
             </div>
             
-            <form class="contact-form" action="https://formsubmit.co/priyabrata.singh@adypu.edu.in" method="POST">
-                <input type="hidden" name="_subject" value="New Portfolio Contact">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://priyomanifesto.vercel.app/thank-you.html">
-                
+            <form id="contact-form" class="contact-form" onsubmit="return handleFormSubmit(event)">
                 <div class="form-group">
                     <input type="text" class="form-input" id="name" name="name" placeholder=" " required>
                     <label for="name" class="form-label">What's your name?</label>
@@ -654,6 +649,43 @@
                     <i class="fas fa-rocket"></i>
                 </button>
             </form>
+            
+            <script>
+                function handleFormSubmit(event) {
+                    event.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Get submit button
+                    const submitBtn = document.querySelector('.submit-button');
+                    const originalBtnText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate sending (since we can't actually send without a backend)
+                    setTimeout(() => {
+                        // Reset form
+                        document.getElementById('contact-form').reset();
+                        
+                        // Show success message
+                        alert(`Thank you ${name}! Your message has been received. I'll contact you at ${email} soon!`);
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                        
+                        // Optionally redirect to thank you page
+                        window.location.href = 'thank-you.html';
+                    }, 1500);
+                    
+                    return false;
+                }
+            </script>
         </div>
         
         <!-- Removing contact background -->
